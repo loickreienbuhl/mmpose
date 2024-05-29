@@ -459,6 +459,7 @@ class OpencvBackendVisualizer(Visualizer):
             else:
                 cv2.setWindowTitle(f'{id(self)}', win_name)
             shown_img = self.get_image() if drawn_img is None else drawn_img
+            shown_img = shown_img.astype(np.uint8)                                  # edited by Loïc
             cv2.imshow(str(id(self)), mmcv.bgr2rgb(shown_img))
             cv2.waitKey(int(np.ceil(wait_time * 1000)))
         else:
